@@ -1,38 +1,44 @@
-Role Name
-=========
+# Ansible Role: clickhouse
+[![License](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg)](https://opensource.org/licenses/MIT)
 
-A brief description of the role goes here.
+## Description
 
-Requirements
-------------
+Deploy [Clickhouse](https://github.com/ClickHouse/ClickHouse) database system using ansible.
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+## Requirements
 
-Role Variables
---------------
+- Ansible >= 2.11 (It might work on previous versions, but we cannot guarantee it)
+- Debian and python on deployer machine.
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+## Role Variables
 
-Dependencies
-------------
+All variables which can be overridden are stored in [defaults/main.yml](defaults/main.yml) file as well as in table below.
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+| Name           | Default Value | Description                        |
+| -------------- | ------------- | -----------------------------------|
+| `clickhouse_ver` | 22.3.3.44 | Clickhouse package version. Also accepts `latest` as parameter. |
 
-Example Playbook
-----------------
+## Example
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+### Playbook
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```yaml
+---
+- name: CLICKHOUSE
+  hosts: clickhouse
+  roles:
+    - role: clickhouse-role
+      tags: clickhouse
 
-License
--------
+```
 
-BSD
+## License
 
-Author Information
-------------------
+This project is licensed under MIT License. See [LICENSE](/LICENSE) for more details.
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+
+## Author Information
+
+[ClickHouse](https://clickhouse.com/docs/en/index.html) by [ClickHouse, Inc.](https://clickhouse.com/company/).
+
+Role by `Alex S`.
